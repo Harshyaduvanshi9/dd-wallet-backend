@@ -7,7 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: "http://localhost:5173", // Vite frontend
+  origin: [
+    "http://localhost:5173",
+    "https://dd-wallet-frontend.vercel.app"
+  ],
   credentials: true
 }));
 app.use(express.json());
@@ -20,4 +23,4 @@ mongoose.connect(process.env.MONGO_URI)
 const influencerRoutes = require("./routes/influencerRoutes");
 app.use("/api/influencers", influencerRoutes);
 
-app.listen(PORT, () => console.log("Server running on port ${PORT}"));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
