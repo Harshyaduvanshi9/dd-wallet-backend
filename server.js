@@ -14,6 +14,9 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("Server is alive");
+});
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Atlas Connected"))
